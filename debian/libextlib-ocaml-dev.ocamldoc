@@ -1,0 +1,2 @@
+# see the doc target in Makefile
+-d html/api -pp "cppo $(ocaml src/configure.ml -cppo-args | tr '\n' ' ' | tr -d '\\' )"

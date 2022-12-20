@@ -1,0 +1,57 @@
+Source: extlib
+Section: ocaml
+Priority: optional
+Maintainer: Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>
+Uploaders:
+ Stéphane Glondu <glondu@debian.org>
+Build-Depends:
+ debhelper-compat (= 13),
+ ocaml-nox,
+ cppo,
+ ocaml-findlib,
+ libfindlib-ocaml-dev,
+ dh-ocaml
+Standards-Version: 4.5.0
+Rules-Requires-Root: no
+Vcs-Browser: https://salsa.debian.org/ocaml-team/extlib
+Vcs-Git: https://salsa.debian.org/ocaml-team/extlib.git
+Homepage: https://github.com/ygrek/ocaml-extlib
+
+Package: libextlib-ocaml-dev
+Architecture: any
+Depends:
+ ${ocaml:Depends},
+ ${shlibs:Depends},
+ ${misc:Depends}
+Provides: ${ocaml:Provides}
+Recommends: ocaml-findlib
+Description: extended standard library for OCaml
+ ExtLib is a project aiming at providing a complete - yet small -
+ standard library for the OCaml programming language.
+ .
+ The purpose of this library is to add new functions to OCaml
+ Standard Library modules, to modify some functions in order to
+ get better performances or more safety (tail-recursive) but also
+ to provide new modules which should be useful for the average
+ OCaml programmer.
+ .
+ ExtLib contains modules implementing: enumeration over abstract
+ collection of elements, efficient bit sets, dynamic arrays,
+ references on lists, Unicode characters and UTF-8 encoded
+ strings, additional and improved functions for hashtables,
+ strings, lists and option types.
+
+Package: libextlib-ocaml
+Architecture: any
+Depends:
+ ${ocaml:Depends},
+ ${shlibs:Depends},
+ ${misc:Depends}
+Provides: ${ocaml:Provides}
+Replaces: libextlib-ocaml-dev (<< 1.5.1-4)
+Breaks: libextlib-ocaml-dev (<< 1.5.1-4)
+Description: extended standard library for OCaml (plugins)
+ ExtLib is a project aiming at providing a complete - yet small -
+ standard library for the OCaml programming language.
+ .
+ This package contains plugins needed by plugins using ExtLib.

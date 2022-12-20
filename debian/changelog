@@ -1,0 +1,398 @@
+extlib (1.7.7-deepin1) unstable; urgency=medium
+
+  * Rebuild
+
+ -- Deepin Packages Builder <packages@deepin.org>  Mon, 14 Nov 2022 17:35:56 +0800
+
+extlib (1.7.7-2) unstable; urgency=medium
+
+  * Add empty dh_dwz override (Closes: #965115)
+  * Bump debhelper compat level to 13
+
+ -- Stéphane Glondu <glondu@debian.org>  Mon, 20 Jul 2020 13:35:16 +0200
+
+extlib (1.7.7-1) unstable; urgency=medium
+
+  [ Andy Li ]
+  * New upstream release
+  * To align with the OPAM extlib package, build with minimal=1,
+    i.e. excluding Unzip, UChar, and UTF8.
+  * Bump Standards-Version to 4.5.0
+
+  [ Stéphane Glondu ]
+  * Build-depend on debhelper-compat
+  * Check DEB_BUILD_OPTIONS before running tests
+  * Fix ocamldoc generation
+  * Add Rules-Requires-Root: no
+
+ -- Stéphane Glondu <glondu@debian.org>  Tue, 19 May 2020 08:33:12 +0200
+
+extlib (1.7.6-1) unstable; urgency=medium
+
+  [ Stéphane Glondu ]
+  * New upstream release
+  * Remove Lifeng from Uploaders (Closes: #925072)
+  * Update Vcs-*
+  * Bump Standards-Version to 4.4.0
+  * Bump debhelper compat level to 12
+
+  [ Andy Li ]
+  * Add dh_missing --fail-missing.
+  * Add autopkgtest support.
+
+ -- Stéphane Glondu <glondu@debian.org>  Fri, 09 Aug 2019 14:10:38 +0200
+
+extlib (1.7.0-3) unstable; urgency=medium
+
+  [ Johannes Schauer ]
+  * Team upload.
+  * d/control: fix Homepage field as project moved from code.google.com to
+    github.com
+  * d/copyright: add ygrek as new upstream contact and use github
+
+  [ Ralf Treinen ]
+  * standards-version 3.9.8 (no change)
+  * update Vcs-{Git,Browser}
+
+ -- Ralf Treinen <treinen@debian.org>  Tue, 25 Oct 2016 20:35:25 +0200
+
+extlib (1.7.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * fix builds on architectures without ocamlopt
+
+ -- Johannes Schauer <josch@debian.org>  Mon, 31 Aug 2015 10:39:38 +0200
+
+extlib (1.7.0-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release
+  * switch to dh style debian/rules
+  * bump Standards-Version to 3.9.6 (no changes needed)
+  * fix debian/copyright to not use a pipe symbol anymore in the license name
+    but to instead use the "foo with bar exception" format
+  * update debian/watch as upstream moved to github
+  * build depend on cppo instead of camlp4-extra as upstream replaced the
+    latter for the former
+  * build-depend on ocaml-findlib with (>= 1.5.1) as per upstream requirement
+  * build-depend on libfindlib-ocaml-dev for the bytes module
+  * upstream README is now README and not README.txt
+  * install upstream changelog
+
+ -- Johannes Schauer <josch@debian.org>  Sun, 30 Aug 2015 12:29:32 +0200
+
+extlib (1.6.1-1) unstable; urgency=medium
+
+  * New upstream release
+  * Update debian/watch
+
+ -- Stéphane Glondu <glondu@debian.org>  Thu, 07 Aug 2014 10:04:18 +0200
+
+extlib (1.5.4-2) unstable; urgency=low
+
+  * Upload to unstable
+
+ -- Stéphane Glondu <glondu@debian.org>  Tue, 03 Dec 2013 08:12:23 +0100
+
+extlib (1.5.4-1) experimental; urgency=low
+
+  [ Mehdi Dogguy ]
+  * Update patch 0001-Compile-ocaml-objects-with-debugging-information.patch
+    to build native library with debugging symbols too (Closes: #649862)
+
+  [ Lifeng Sun ]
+  * New upstream release. (Closes: #663905, #596622)
+  * Bump Standards-Version to 3.9.4.
+  * debian/control: canonical VCS-* fields.
+  * debian/copyright: switch to dep5 format.
+  * Add myself to Uploaders.
+
+ -- Lifeng Sun <lifongsun@gmail.com>  Wed, 24 Jul 2013 17:21:35 +0800
+
+extlib (1.5.2-1) unstable; urgency=low
+
+  * New upstream release
+  * Remove Stefano from Uploaders
+  * Switch source package format to 3.0 (quilt)
+  * Bump Standards-Version to 3.9.2
+  * Bump debhelper compat level to 8
+
+ -- Stéphane Glondu <glondu@debian.org>  Mon, 15 Aug 2011 20:52:15 +0200
+
+extlib (1.5.1-5) unstable; urgency=low
+
+  * Switch packaging to dh-ocaml 0.9
+
+ -- Stéphane Glondu <glondu@debian.org>  Fri, 30 Oct 2009 18:19:25 +0100
+
+extlib (1.5.1-4) unstable; urgency=low
+
+  * Build and install native plugin
+  * Add README.source
+  * debian/control:
+    - add myself to Uploaders
+    - move to section ocaml
+    - add binary package libextlib-ocaml
+    - update Standards-Version to 3.8.3
+
+ -- Stéphane Glondu <glondu@debian.org>  Mon, 31 Aug 2009 18:39:52 +0200
+
+extlib (1.5.1-3) unstable; urgency=low
+
+  * uploading to unstable
+  * debian/control:
+    - bump build-deps to avoid spurious build failures in unstable
+  * remove obsolete debian/svn-deblayout (we now use git)
+  * debian/rules: use ocaml.mk as a CDBS "rules" snippet, bump dh-ocaml
+    build-dep to the minimum version implementing it
+
+ -- Stefano Zacchiroli <zack@debian.org>  Thu, 26 Feb 2009 23:24:05 +0100
+
+extlib (1.5.1-2) experimental; urgency=low
+
+  * rebuild with OCaml 3.11
+  * debian/control:
+    - bump Standards-Version (no changes required)
+    - add build-dep on dh-ocaml (which now ships the CDBS class)
+    - strengthen deps to OCaml (to ensure proper build in experimental)
+    - rely on debhelper 7 (bump deps and debian/compat accordingly)
+  * make Vcs-* fields point to the new git repository
+
+ -- Stefano Zacchiroli <zack@debian.org>  Sun, 01 Feb 2009 18:49:41 +0100
+
+extlib (1.5.1-1) unstable; urgency=low
+
+  * new upstream release, reflecting project relocation (closes: #458257)
+    - update debian/watch to point to the new download url
+    - update Homepage field in debian/control
+  * fix vcs-svn field to point just above the debian/ dir
+  * rename upstream/ with tarballs/ and shorten debian/svn-deblayout
+    accordingly
+    - update debian/patches/00dpatch.conf to point to ../tarballs/
+  * refresh patch build_with_debug_info to match new upstream
+
+ -- Stefano Zacchiroli <zack@debian.org>  Mon, 07 Jan 2008 22:07:50 +0100
+
+extlib (1.5-10) unstable; urgency=low
+
+  * promote Homepage to a real debian/control field
+  * update standards-version, no changes needed
+  * setting me as an uploader, d-o-m as the maintainer
+
+ -- Stefano Zacchiroli <zack@debian.org>  Fri, 28 Dec 2007 20:24:47 +0100
+
+extlib (1.5-9) unstable; urgency=low
+
+  * debian/rules
+    - use CDBS support to generated ocamldoc documentation
+  * debian/patches
+    - remove no longer needed patch 03_install (was only useful to tune
+      ocamldoc generation)
+  * debian/*.doc-base
+    - remove doc-base entry for ocamldoc API reference, now it will be
+      automatically generated during build
+
+ -- Stefano Zacchiroli <zack@debian.org>  Tue, 04 Sep 2007 10:02:33 +0200
+
+extlib (1.5-8) experimental; urgency=low
+
+  * rebuild against 3.10
+  * bump debhelper dep and compatibility to 5
+
+ -- Stefano Zacchiroli <zack@debian.org>  Thu, 12 Jul 2007 15:41:38 +0200
+
+extlib (1.5-7) unstable; urgency=low
+
+  * compile objects with debugging information, patch from Ivan Jager
+    (Closes: #415194)
+
+ -- Stefano Zacchiroli <zack@debian.org>  Mon, 09 Apr 2007 15:29:33 +0200
+
+extlib (1.5-6) unstable; urgency=low
+
+  * debian/rules
+    - switched to cdbs
+  * debian/control
+    - bumped build dependency on ocaml-nox to >= 3.09.2-7 since we now rely on
+      the ocaml.mk cdbs class
+    - added build dependency on cdbs
+
+ -- Stefano Zacchiroli <zack@debian.org>  Sat,  4 Nov 2006 09:34:17 +0100
+
+extlib (1.5-5) unstable; urgency=low
+
+  * debian/rules
+    - avoid to create debian/control from debian/control.in on ocamlinit
+  * debian/control.in
+    - file removed, no longer needed
+
+ -- Stefano Zacchiroli <zack@debian.org>  Wed,  6 Sep 2006 09:44:06 +0200
+
+extlib (1.5-4) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Stefano Zacchiroli <zack@debian.org>  Tue, 16 May 2006 20:09:50 +0000
+
+extlib (1.5-3) experimental; urgency=low
+
+  * Rebuilt against OCaml 3.09.2, bumped deps accordingly.
+  * Bumped Standards-Version to 3.7.2 (no changes needed).
+
+ -- Stefano Zacchiroli <zack@debian.org>  Thu, 11 May 2006 23:51:32 +0000
+
+extlib (1.5-2) unstable; urgency=low
+
+  * debian/patches/03_install.dpatch
+    - bugfix: invoke ocamldoc to generate html documentation
+
+ -- Stefano Zacchiroli <zack@debian.org>  Mon, 20 Feb 2006 12:33:04 -0500
+
+extlib (1.5-1) unstable; urgency=low
+
+  * New upstream release (closes: #353734)
+  * debian/patches/03_install.dpatch
+    - new patch to avoid installing unexistent .css file
+  * debian/control
+    - added homepage to long description
+  * debian/copyright
+    - updated wrt current authors and maintainers
+  * debian/*
+    - comsetic changes here and there
+  * debian/watch
+    - added watch file
+
+ -- Stefano Zacchiroli <zack@debian.org>  Mon, 20 Feb 2006 11:34:46 -0500
+
+extlib (1.4-5) unstable; urgency=low
+
+  * Rebuilt against OCaml 3.09.1, bumped deps accordingly.
+
+ -- Stefano Zacchiroli <zack@debian.org>  Sat,  7 Jan 2006 11:51:10 +0100
+
+extlib (1.4-4) unstable; urgency=low
+
+  * debian/rules
+    - more precise mv statement due to more restrictive coreutils,
+      fixes FTBFS (closes: #340879).
+      Thanks to Roland Stigge for the patch.
+
+ -- Stefano Zacchiroli <zack@debian.org>  Sat, 26 Nov 2005 18:52:47 +0100
+
+extlib (1.4-3) unstable; urgency=low
+
+  * Rebuilt with ocaml 3.09 (closes: #338098)
+  * debian/control
+    - bumped standards version
+  * debian/*
+    - no longer hardcoding of ocaml abi
+
+ -- Stefano Zacchiroli <zack@debian.org>  Thu, 10 Nov 2005 09:19:59 +0000
+
+extlib (1.4-2) unstable; urgency=low
+
+  * Changed doc-base section to Apps/Programming (closes: #310760).
+
+ -- Stefano Zacchiroli <zack@debian.org>  Thu, 26 May 2005 22:38:18 +0200
+
+extlib (1.4-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Stefano Zacchiroli <zack@debian.org>  Fri, 25 Mar 2005 12:48:35 +0100
+
+extlib (1.3-3) unstable; urgency=low
+
+  * Rebuilt against ocaml 3.08.3
+
+ -- Stefano Zacchiroli <zack@debian.org>  Thu, 24 Mar 2005 22:21:37 +0100
+
+extlib (1.3-2) unstable; urgency=low
+
+  * debian/rules
+    - install .ml/.mli files using cp -a to avoid .mli having timestamps
+      greater than corresponding .cmi (Closes: Bug#283122)
+
+ -- Stefano Zacchiroli <zack@debian.org>  Fri, 26 Nov 2004 23:45:27 +0100
+
+extlib (1.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Stefano Zacchiroli <zack@debian.org>  Tue, 26 Oct 2004 11:12:23 +0200
+
+extlib (1.2-2) unstable; urgency=medium
+
+  * debian/patches/17_ocamldbi_compat
+    - patched dbi.{ml,mli} so that they are compatible with those
+      shipped with latest ocamldbi. This patch is basically the diff
+      between extlib release 1.2 and current extlib CVS.
+
+ -- Stefano Zacchiroli <zack@debian.org>  Thu,  5 Aug 2004 11:21:03 +0200
+
+extlib (1.2-1) unstable; urgency=low
+
+  * New upstream release
+    - ocaml 3.08 porting
+    - IO module: simplified and added binary files support
+    - added Unzip module (ocaml implementation of zlib inflate)
+  * debian/patches
+    - removed old patches for META version and ocaml 3.08 porting
+
+ -- Stefano Zacchiroli <zack@debian.org>  Mon,  2 Aug 2004 11:59:46 +0200
+
+extlib (1.1-4) unstable; urgency=low
+
+  * rebuilt with ocaml 3.08
+  * debian/control
+    - bumped ocaml deps to 3.08
+    - bumped standards-version to 3.6.1.1
+    - changed ocaml deps to ocaml-nox
+  * debian/patches/13_ocaml_308.dpatch
+    - added patch for s/create_string/caml_create_string/
+
+ -- Stefano Zacchiroli <zack@debian.org>  Mon, 26 Jul 2004 16:09:53 +0200
+
+extlib (1.1-3) unstable; urgency=low
+
+  * debian/rules
+    - fixed ocamldoc documentation creation ("-doc" switch)
+
+ -- Stefano Zacchiroli <zack@debian.org>  Tue, 25 May 2004 01:43:07 +0200
+
+extlib (1.1-2) unstable; urgency=low
+
+  * debian/rules
+    - fixed typo which makes build process fail on non-native archs
+
+ -- Stefano Zacchiroli <zack@debian.org>  Mon, 24 May 2004 09:40:32 +0200
+
+extlib (1.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Stefano Zacchiroli <zack@debian.org>  Sun, 23 May 2004 21:46:27 +0200
+
+extlib (1.0b-3) unstable; urgency=low
+
+  * Applied patch from Nicolas Cannasse which fixes a segfault of
+    Std.input_list
+
+ -- Stefano Zacchiroli <zack@debian.org>  Sat, 20 Dec 2003 14:49:57 +0100
+
+extlib (1.0b-2) unstable; urgency=low
+
+  * debian/rules
+    - bugfix: invoke install.ml with the right parameter on bytecode-only
+      architecture (fix build failure on all that archs)
+  * debian/control
+    - bumped Standards-Version to 3.6.1.0
+    - qualified ocaml-findlib dependencies with >= 0.8-5
+
+ -- Stefano Zacchiroli <zack@debian.org>  Wed, 15 Oct 2003 10:45:01 +0200
+
+extlib (1.0b-1) unstable; urgency=low
+
+  * Initial Release (Closes: Bug#213127).
+
+ -- Stefano Zacchiroli <zack@debian.org>  Fri,  3 Oct 2003 23:55:57 +0200

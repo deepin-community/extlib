@@ -1,0 +1,3 @@
+@OCamlStdlibDir@/extlib/META
+@OCamlStdlibDir@/extlib/*.cma
+OPT: @OCamlStdlibDir@/extlib/*.cmxs

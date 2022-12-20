@@ -1,0 +1,2 @@
+Tests: byte-code, native-code
+Depends: ocaml-nox, ocaml-findlib, @

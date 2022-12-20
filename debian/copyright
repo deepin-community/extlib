@@ -1,0 +1,41 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: ocaml-extlib
+Upstream-Contact: ygrek <ygrek@autistici.org>
+Source: https://github.com/ygrek/ocaml-extlib
+
+Files: *
+Copyright: 1996-2003 Nicolas Cannasse <ncannasse@motion-twin.com>
+           2003 Brian Hurt <brian.hurt@qlogic.com>
+           2002, 2003 Yamagata Yoriyuki <yoriyuki@mbg.ocn.ne.jp>
+           1996-2003 Xavier Leroy
+           1996-2003 Markus Mottl
+           2004 Bardur Arantsson
+           2004 Jesse Guardiani
+           2005 Richard W.M. Jones <rich@annexia.org>
+           2011-2015 ygrek
+License: LGPL-2+ with OCaml-linking exception
+  The Library is distributed under the terms of the GNU Library General
+  Public License version 2 (found in /usr/share/common-licenses/LGPL-2
+  on debian systems).
+  .
+  As a special exception to the GNU Library General Public License, you
+  may link, statically or dynamically, a "work that uses the Library"
+  with a publicly distributed version of the Library to produce an
+  executable file containing portions of the Library, and distribute
+  that executable file under terms of your choice, without any of the
+  additional requirements listed in clause 6 of the GNU Library General
+  Public License.  By "a publicly distributed version of the Library",
+  we mean either the unmodified Library, or a modified version of the
+  Library that is distributed under the conditions defined in clause 3
+  of the GNU Library General Public License.  This exception does not
+  however invalidate any other reasons why the executable file might be
+  covered by the GNU Library General Public License.
+  .
+  On Debian systems, the complete text of the GNU Library General
+  Public License can be found in `/usr/share/common-licenses/LGPL-2'.
+
+Files: debian/*
+Copyright: Stefano Zacchiroli <zack@debian.org>
+License: GPL-2+
+  On Debian systems, the complete text of the GNU General Public
+  License can be found in `/usr/share/common-licenses/GPL-2'.

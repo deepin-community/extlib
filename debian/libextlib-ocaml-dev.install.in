@@ -1,0 +1,7 @@
+@OCamlStdlibDir@/extlib/*.cmi
+@OCamlStdlibDir@/extlib/*.cmt
+@OCamlStdlibDir@/extlib/*.cmti
+@OCamlStdlibDir@/extlib/*.ml*
+OPT: @OCamlStdlibDir@/extlib/*.a
+OPT: @OCamlStdlibDir@/extlib/*.cmx
+OPT: @OCamlStdlibDir@/extlib/*.cmxa
