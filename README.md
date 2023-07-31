@@ -1,7 +1,7 @@
 OCaml Extended standard Library - ExtLib.
 =========================================
 
-[![Build Status](https://travis-ci.org/ygrek/ocaml-extlib.svg?branch=master)](https://travis-ci.org/ygrek/ocaml-extlib)
+[![Build Status](https://travis-ci.com/ygrek/ocaml-extlib.svg?branch=master)](https://travis-ci.com/ygrek/ocaml-extlib)
 [![Build status](https://ci.appveyor.com/api/projects/status/6a3t5iq7ljbd25iq?svg=true)](https://ci.appveyor.com/project/ygrek/ocaml-extlib/branch/master)
 
 ```
@@ -53,7 +53,7 @@ On bytecode-only architecture run
 
   `make minimal=1 all install`
 
-`minimal=1` will exclude from build several modules (namely `Unzip` `UChar` `UTF8`) potentially
+`minimal=1` will exclude from build several modules (namely `Base64` `Unzip` `UChar` `UTF8`) potentially
 conflicting with other well established OCaml libraries. If your code is expecting to find
 these modules in extlib - omit this parameter during build to produce the full library.
 
@@ -65,6 +65,9 @@ Generate and read the documentation.
 Release
 -------
 
+* Check for changes in stdlib (e.g. with ocaml test/std.ml)
+* Update sw_test_all target for new OCaml release
+* `make sw_test_all`
 * Review `git log` and update CHANGES
 * Update version in Makefile
 * Commit

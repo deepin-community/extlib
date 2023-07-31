@@ -99,17 +99,26 @@ module List :
       be renamed to stay compatible with OCaml 4.10.
   *)
 
-  val find_map : ('a -> 'b option) -> 'a list -> 'b
-#if OCAML >= 402
-  [@@ocaml.deprecated "this function will change type to stay compatible with OCaml 4.10 in next extlib release, use ExtList.find_map_exn instead"]
-#endif
-
   val find_map_opt : ('a -> 'b option) -> 'a list -> 'b option
+  (** same as find_map_exn but returning option *)
+
+  val find_map : ('a -> 'b option) -> 'a list -> 'b option
+  (** same as find_map_opt *)
 
   val split_nth : int -> 'a list -> 'a list * 'a list
   (** [split_nth n l] returns two lists [l1] and [l2], [l1] containing the
    first [n] elements of [l] and [l2] the others. Raise [Invalid_index] if
    [n] is outside of [l] size bounds. *)
+
+  val filteri : (int -> 'a -> bool) -> 'a list -> 'a list
+  (** Same as {!List.filter}, but the predicate is applied to the index of
+     the element as first argument (counting from 0), and the element
+     itself as second argument.
+  *)
+
+  val fold_left_map : ('a -> 'b -> 'a * 'c) -> 'a -> 'b list -> 'a * 'c list
+  (** [fold_left_map] is  a combination of [fold_left] and [map] that threads an
+    accumulator through calls to [f] *)
 
   val remove : 'a list -> 'a -> 'a list
   (** [remove l x] returns the list [l] without the first element [x] found
@@ -266,7 +275,50 @@ module List :
   val of_seq : 'a Seq.t -> 'a list
 #endif
 
+#if OCAML >= 412
+  val partition_map : ('a -> ('b, 'c) Either.t) -> 'a list -> 'b list * 'c list
+  (** [partition_map f l] returns a pair of lists [(l1, l2)] such that,
+      for each element [x] of the input list [l]:
+      - if [f x] is [Left y1], then [y1] is in [l1], and
+      - if [f x] is [Right y2], then [y2] is in [l2].
+
+      The output elements are included in [l1] and [l2] in the same
+      relative order as the corresponding input elements in [l].
+
+      In particular, [partition_map (fun x -> if f x then Left x else Right x) l]
+      is equivalent to [partition f l].
+
+      This function was introduced in OCaml 4.12.0, and is _not_ implemented in extlib for older OCaml versions
+  *)
+#endif
+
   val concat_map : ('a -> 'b list) -> 'a list -> 'b list
+
+val equal : ('a -> 'a -> bool) -> 'a list -> 'a list -> bool
+(** [equal eq [a1; ...; an] [b1; ..; bm]] holds when
+    the two input lists have the same length, and for each
+    pair of elements [ai], [bi] at the same position we have
+    [eq ai bi].
+
+    Note: the [eq] function may be called even if the
+    lists have different length. If you know your equality
+    function is costly, you may want to check {!compare_lengths}
+    first.
+*)
+
+val compare : ('a -> 'a -> int) -> 'a list -> 'a list -> int
+(** [compare cmp [a1; ...; an] [b1; ...; bm]] performs
+    a lexicographic comparison of the two input lists,
+    using the same ['a -> 'a -> int] interface as {!Stdlib.compare}:
+
+    - [a1 :: l1] is smaller than [a2 :: l2] (negative result)
+      if [a1] is smaller than [a2], or if they are equal (0 result)
+      and [l1] is smaller than [l2]
+    - the empty list [[]] is strictly smaller than non-empty lists
+
+    Note: the [cmp] function will be called even if the lists have
+    different lengths.
+*)
 
   (** {6 Exceptions} *)
 

@@ -7,9 +7,9 @@ trap "rm -rf ${testdir}" 0 INT QUIT ABRT PIPE TERM
 cd ${testdir}
 
 cat <<EOF > test.ml
-open Base64
-let r = Base64.str_decode (Base64.str_encode "Hello world!")
-let _ = Printf.printf "%s" r
+open ExtString
+module S = String
+let _ = assert (S.starts_with "foo" "f")
 EOF
 
 if [ -x '/usr/bin/ocamlopt' ]
@@ -19,7 +19,7 @@ then
     echo "build: OK"
 
     [ -x native-code-test ]
-    ./native-code-test 2> /dev/null | grep -q "Hello world!"
+    ./native-code-test
 
     echo "run: OK"
 else
