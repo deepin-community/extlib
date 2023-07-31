@@ -19,13 +19,19 @@ override_dh_installchangelogs:
 
 # do not require ocamlopt during building or testing
 ifneq ($(OCAML_HAVE_OCAMLOPT),yes)
+
 override_dh_auto_build:
 	make minimal=1 -C src all
 
 override_dh_auto_test:
-ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	make minimal=1 -C test all run
-endif
-endif
 
-override_dh_dwz:
+else
+
+override_dh_auto_build:
+	dh_auto_build -- minimal=1
+
+override_dh_auto_test:
+	dh_auto_test -- minimal=1
+
+endif

@@ -1,8 +1,26 @@
-extlib (1.7.7-deepin1) unstable; urgency=medium
+extlib (1.7.8-2) unstable; urgency=medium
 
-  * Rebuild
+  [ Stéphane Glondu ]
+  * Always build with minimal=1
 
- -- Deepin Packages Builder <packages@deepin.org>  Mon, 14 Nov 2022 17:35:56 +0800
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+ -- Stéphane Glondu <glondu@debian.org>  Thu, 24 Feb 2022 14:38:12 +0100
+
+extlib (1.7.8-1) unstable; urgency=medium
+
+  [ Andy Li ]
+  * New upstream release
+  * Fix autopkgtest (test ExtString instead of Base64, which was
+    removed from the minimal build)
+  * Bump Standards-Version to 4.6.0 (no change)
+
+  [ Stéphane Glondu ]
+  * Bump debian/watch format version to 4
+
+ -- Stéphane Glondu <glondu@debian.org>  Sun, 21 Nov 2021 14:44:54 +0100
 
 extlib (1.7.7-2) unstable; urgency=medium
 

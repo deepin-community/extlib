@@ -173,14 +173,41 @@ let rec find_map_exn f = function
       | Some y -> y
       | None -> find_map_exn f xs
 
-let find_map = find_map_exn
-
 let rec find_map_opt f = function
   | [] -> None
   | x :: xs ->
       match f x with
       | Some _ as y -> y
       | None -> find_map_opt f xs
+
+let find_map = find_map_opt
+
+let filteri f l =
+  let rec findnext i dst = function
+    | [] -> ()
+    | h :: t ->
+      if f i h then
+        let r = { hd = h; tl = [] } in
+        dst.tl <- inj r;
+        findnext (i+1) r t
+      else
+        findnext (i+1) dst t
+  in
+  let dummy = dummy_node () in
+  findnext 0 dummy l;
+  dummy.tl
+
+let fold_left_map f accu l =
+  let dummy = dummy_node () in
+  let rec aux accu l_accu = function
+    | [] -> accu, dummy.tl
+    | x :: l ->
+        let accu, x = f accu x in
+        let r = { hd = x; tl = [] } in
+        l_accu.tl <- inj r;
+        aux accu r l
+  in
+  aux accu dummy l
 
 let fold_right_max = 1000
 
@@ -380,7 +407,7 @@ let combine l1 l2 =
   loop dummy l1 l2;
   dummy.tl
 
-let sort ?(cmp=compare) = List.sort cmp
+let sort ?(cmp=Pervasives.compare) = List.sort cmp
 
 #if OCAML < 406
 let rec init size f =
@@ -578,6 +605,24 @@ let concat_map f l =
        let xs = f x in
        aux f (rev_append xs acc) l
   in aux f [] l
+#endif
+
+#if OCAML < 412
+let rec equal eq l1 l2 =
+  match l1, l2 with
+  | [], [] -> true
+  | [], _::_ | _::_, [] -> false
+  | a1::l1, a2::l2 -> eq a1 a2 && equal eq l1 l2
+
+let rec compare cmp l1 l2 =
+  match l1, l2 with
+  | [], [] -> 0
+  | [], _::_ -> -1
+  | _::_, [] -> 1
+  | a1::l1, a2::l2 ->
+    let c = cmp a1 a2 in
+    if c <> 0 then c
+    else compare cmp l1 l2
 #endif
 
 end
